@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import './App.css'
 import ReservationContainer from '../ReservationContainer/ReservationContainer'
-import { fetchReservations } from '../../ApiFetch/ApiFetch'
+import { 
+  getReservationsApi, 
+  cancelReservationApi, 
+  makeReservationApi 
+} from '../../ApiFetch/ApiFetch'
 
 class App extends Component {
   constructor() {
@@ -13,16 +17,27 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
-    const reservations = await fetchReservations()
+    const reservations = await getReservationsApi()
     reservations && this.setState({ reservations })
     !reservations && this.setState({ error: 'Loading failed!' })  
+  }
+
+  makeReservation = () => {
+
+  }
+
+  cancelReservation = (id) => {
+    console.log(id)
   }
 
   render() {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <ReservationContainer reservations={this.state.reservations}/>  
+        <ReservationContainer 
+          reservations={this.state.reservations}
+          cancelReservation={this.cancelReservation}
+        />  
       </div>
     )
   }
