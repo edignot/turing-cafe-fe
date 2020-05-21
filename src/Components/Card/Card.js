@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import './Card.css'
 
 const Card = (props) => {
@@ -26,3 +27,14 @@ const Card = (props) => {
 }
 
 export default Card
+
+Card.propTypes = {
+    reservation: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      number: PropTypes.number.isRequired
+    }).isRequired,
+    cancelReservation: PropTypes.func.isRequired
+  }
