@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, cleanup, fireEvent } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 import Form from './Form'
 
 describe('<Form/>', () => {
@@ -13,7 +14,6 @@ describe('<Form/>', () => {
   afterEach(cleanup)
   
   test('that MAKE RESERVATION button is enabled if all required inputs are filled', () => {
-    // Test in progress, not passing for now
     const { getByPlaceholderText, getByText } = formComponent
     expect(getByText('MAKE RESERVATION')).toHaveAttribute('disabled')
     fireEvent.change(getByPlaceholderText('name'), {target: {value: 'name'}})
