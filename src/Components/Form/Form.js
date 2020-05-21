@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Form.css'
 
 export default class Form extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ export default class Form extends Component {
         this.setState({ 
           name: '',
           date: '',
-          type: '',
+          time: '',
           number: 0
         })
       }
@@ -65,6 +66,7 @@ export default class Form extends Component {
                     onChange={this.handleChange}
                 />
                 <button
+                    className='reservation-btn'
                     type='submit'
                     onClick={this.reserve}
                     disabled={isComplete}

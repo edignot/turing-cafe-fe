@@ -9,6 +9,7 @@ export const getReservationsApi = async () => {
 }
 
 export const cancelReservationApi = async () => {
+    // Making CANCEL request to database
     try {
 
     } catch (error) {
@@ -17,6 +18,7 @@ export const cancelReservationApi = async () => {
 }
 
 export const makeReservationApi = async () => {
+    // Making POST request to database
     try {
 
     } catch (error) {

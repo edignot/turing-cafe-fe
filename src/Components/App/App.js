@@ -23,12 +23,18 @@ class App extends Component {
     !reservations && this.setState({ error: 'Loading failed!' })  
   }
 
-  makeReservation = () => {
-    alert('makereservation')
+  makeReservation = (newReservation) => {
+    this.setState({
+      reservations: [
+        ...this.state.reservations,
+        newReservation
+      ]
+    })
   }
 
   cancelReservation = (id) => {
-    console.log(id)
+    const reservations = this.state.reservations.filter(reservation => reservation.id !== id)
+    this.setState({ reservations })
   }
 
   render() {
