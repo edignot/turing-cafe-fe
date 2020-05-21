@@ -22,4 +22,20 @@ describe('<Form/>', () => {
     fireEvent.change(getByPlaceholderText('number'), {target: {value: 2}})
     expect(getByText('MAKE RESERVATION')).not.toHaveAttribute('disabled')
   })
+
+  test('that MAKE RESERVATION is invoked with correct arguments', () => {
+    const { getByPlaceholderText, getByText } = formComponent
+    fireEvent.change(getByPlaceholderText('name'), {target: {value: 'name'}})
+    fireEvent.change(getByPlaceholderText('date'), {target: {value: 'date'}})
+    fireEvent.change(getByPlaceholderText('time'), {target: {value: 'time'}})
+    fireEvent.change(getByPlaceholderText('number'), {target: {value: 2}})
+    fireEvent.click(getByText('MAKE RESERVATION'))
+    expect(makeReservation).toHaveBeenCalledTimes(1)
+    expect(makeReservation).toHaveBeenCalledWith({
+      name: 'name',
+      date: 'date',
+      time: 'time',
+      number: 2
+    })
+  })
 })
