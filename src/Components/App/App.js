@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import ReservationContainer from '../ReservationContainer/ReservationContainer'
+import Form from '../Form/Form'
 import { 
   getReservationsApi, 
   cancelReservationApi, 
@@ -23,7 +24,7 @@ class App extends Component {
   }
 
   makeReservation = () => {
-
+    alert('makereservation')
   }
 
   cancelReservation = (id) => {
@@ -34,6 +35,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
+        <Form 
+          makeReservation={this.makeReservation}
+        />
         <ReservationContainer 
           reservations={this.state.reservations}
           cancelReservation={this.cancelReservation}
